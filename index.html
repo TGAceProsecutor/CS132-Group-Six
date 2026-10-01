@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>PH Twitter Fake News Analysis</title>
+		<title>Philippine Solar Energy Potential</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -34,14 +34,20 @@
 						</div>
 						<div class="col-8 col-7-large col-12-medium">
 							<header>
-								<h1>Hi. We are <strong>Group Name</strong>.</h1>
+								<h1>Hi. We are <strong>Group Six (7)</strong>.</h1>
 							</header>
-							<p>And this is our project, <strong>Project Title</strong>, <em>a short explanation of the project objectives</em>. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+							<p>And this is our project,
+								<strong>Harnessing the Tropics: Estimating Solar Energy Generation
+									Potential Using Philippine Weather Data</strong>.
+									Our goal is to estimate the feasibility and sustainability of
+									solar energy in the Philippines based on current weather data,
+									in line with <b>Sustainable Development Goal 7: Affordable and Clean Energy.</b></p>
 							<p>Data Science Team</p>
 							<ul style="list-style-type:none; margin-top:-30px;">
-							  <li>Student's name, section</li>
-							  <li>Student's name, section</li>
-							  <li>Student's name, section</li>
+							  <li>Lara Carrillo, WFX</li>
+							  <li>Levie Dianito, WFX</li>
+							  <li>Jonathan Reaport, WFX</li>
+							  <li>Ivan Junio, WFX</li>
 							</ul>
 						</div>
 					</div>
@@ -53,34 +59,79 @@
 				<div class="container">
 					<header>
 						<h2>Here's an overview of our project.</h2>
-						<p>Odio turpis amet sed consequat eget posuere consequat.</p>
 					</header>
 					<div class="row aln-center">
 						<div class="col-4 col-6-medium col-12-small">
 							<section class="box style1">
 								<span class="icon featured fa-comments"></span>
-								<h3>Motivation</h3>
-								<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
+								<h3>Background</h3>
+								<p>With record-high electricity rates and geopolitical energy shocks,
+									countless Filipinos nationwide have begun to seek solar energy as a stabler
+									source of energy. But just how feasible could a solar-driven Philippines be,
+									given the country's climate?
+								</p>
 							</section>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<section class="box style1">
 								<span class="icon solid featured fa-camera-retro"></span>
 								<h3>Problem</h3>
-								<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
+								<p>It is still unknown how <b>weather parameters</b>, <b>location</b>, and <b>seasonal variation</b>
+								affect solar energy generation in a Philippine context.</p>
 							</section>
 						</div>
 						<div class="col-4 col-6-medium col-12-small">
 							<section class="box style1">
 								<span class="icon featured fa-thumbs-up"></span>
 								<h3>Solution</h3>
-								<p>Ornare nulla proin odio consequat sapien vestibulum ipsum primis sed amet consequat lorem dolore.</p>
+								<p>With gathered data collected from NASA on the existing power farms of the Philippines,
+									we can estimate and evaluate the effect of weather, location, and seasons on solar energy generation.
+								</p>
 							</section>
 						</div>
 					</div>
 					<footer>
-						<p>Lorem ipsum dolor sit sapien vestibulum ipsum primis?</p>
-						<a href="#portfolio" class="button large scrolly">Let's take a look at our data</a>
+						<h3>Research Questions</h3>
+						<ol>
+							<li>What weather parameters are most strongly associated with estimated solar energy generation potential in Philippine solar power plants?</li>
+							<li>How does estimated solar energy generation potential vary across the locations of selected solar power plants in the Philippines?</li>
+							<li>How does estimated solar energy generation potential vary across seasons in the Philippines?</li>
+						</ol>
+						<h3>Research Hypotheses</h3>
+						<ol>
+							<li>H1: Solar irradiance has the strongest positive association with estimated solar energy generation potential among the weather parameters studied.</li>
+							<li>H2: Locations with higher solar irradiance will have higher estimated solar energy generation potential.</li>
+							<li>H3: Estimated solar energy generation potential differs significantly among seasons in the Philippines.</li>
+						</ol>
+						<h3>Objectives</h3>
+						<ol>
+							<li>To determine which studied weather parameters are most strongly associated with estimated solar energy generation potential.</li>
+							<li>To compare the estimated solar energy generation potential of selected solar power plants across geographic regions of the Philippines.</li>
+							<li>To examine seasonal variation in estimated solar energy generation potential across the Philippines.</li>
+						</ol>
+						
+						<h3>Dataset</h3>
+						<p>The data comprises of 3 parts:</p>
+						<ol>[57 rows] The existing power plants of the Philippines (Location, Installed and Dependable Capacity)</ol>
+						<ol>[480 rows] The awarded and to-be-constructed power plants of the Philippines (Location, Projected Capacity)</ol>
+						<ol>[~20k rows] The daily weather data in locations of aforementioned power plants (Solar Irradiation, Wind Speed, Temperature, Pressure, etc.)</ol>
+						<p>Dataset size is roughly 20.8k rows of weather data across all Philippine solar power farms.</p>
+						<h3>Data Collection</h3>
+						<ul>
+							<li>
+								Data on existing power farms as of Nov 2025 was taken from:
+								<ul>
+									<li>https://prod-cms.doe.gov.ph/documents/d/guest/01-luzon-pdf</li>
+									<li>https://prod-cms.doe.gov.ph/documents/d/guest/02-visayas-pdf</li>
+									<li>https://prod-cms.doe.gov.ph/documents/d/guest/03-mindanao-pdf</li>
+								</ul>
+							</li>
+							<li>Data on awarded power farms from July 2026 was taken from https://prod-cms.doe.gov.ph/documents/d/guest/a-5-awarded-solar-projects-as-of-30-june-2026-pdf</li>
+							<li>Data on weather was taken from https://power.larc.nasa.gov/, where
+								weather data will be provided for any place provided its
+								<b>latitude</b> and <b>longitude</b>.
+							</li>
+						</ul>
 					</footer>
 				</div>
 			</article>
