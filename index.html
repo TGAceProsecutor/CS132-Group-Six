@@ -1,21 +1,28 @@
-<!DOCTYPE HTML>
-<!--
-	Miniport by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<title>Philippine Solar Energy Potential</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Philippine Solar Energy Potential</title>
+		<meta name="theme-color" content="#163D32" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" />
+		<link rel="stylesheet" href="assets/css/site.css" />
+		<script>document.documentElement.classList.add('js');</script>
 	</head>
-	<body class="is-preload">
+	<body>
 
 		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
+		<header class="nav" id="nav">
+			<div class="wrap nav-inner">
+				<a class="nav-mark" href="#top" aria-label="Top">
+					<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" /><g class="mark-rays"><path d="M16 2v4M16 26v4M2 16h4M26 16h4M6.1 6.1l2.8 2.8M23.1 23.1l2.8 2.8M6.1 25.9l2.8-2.8M23.1 8.9l2.8-2.8" /></g></svg>
+				</a>
+				<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+					<span class="sr-only">Menu</span><span class="bars" aria-hidden="true"></span>
+				</button>
+				<ul class="nav-links" id="nav-links">
 					<li><a href="#top">Top</a></li>
 					<li><a href="#overview">Overview</a></li>
 					<li><a href="#data">Data</a></li>
@@ -23,141 +30,238 @@
 					<li><a href="#results">Results</a></li>
 					<li><a href="#team">Team</a></li>
 				</ul>
-			</nav>
+			</div>
+		</header>
+
+		<main>
 
 		<!-- Home -->
-			<article id="top" class="wrapper style1">
-				<div class="container">
-					<div class="row">
-						<div class="col-4 col-5-large col-12-medium hero-visual">
-							<div class="hero-badge">
-								<span class="icon solid fa-sun"></span>
-							</div>
-						</div>
-						<div class="col-8 col-7-large col-12-medium">
-							<header>
-								<h1>Hi. We are <strong>Group Six (7)</strong>.</h1>
-							</header>
-							<p>
-								This is our project,
-								<strong>Harnessing the Tropics: Estimating Solar Energy Generation Potential Using Philippine Weather Data</strong>.
-								Our goal is to estimate the feasibility and sustainability of solar energy in the Philippines based on current weather data,
-								in line with <strong>Sustainable Development Goal 7: Affordable and Clean Energy.</strong>
-							</p>
-							<p class="section-label">Data Science Team</p>
-							<ul class="member-list">
-								<li>Lara Carrillo</li>
-								<li>Levie Dianito</li>
-								<li>Ivan Junio</li>
-								<li>Jonathan Reaport</li>
-							</ul>
-						</div>
+		<section id="top" class="hero tone-dark">
+			<div class="wrap hero-grid">
+				<div class="hero-copy">
+					<h1 class="enter" style="--d:0">Hi. We are <strong>Group Six (7)</strong>.</h1>
+					<p class="lede enter" style="--d:1">
+						This is our project,
+						<strong>Harnessing the Tropics: Estimating Solar Energy Generation Potential Using Philippine Weather Data</strong>.
+						Our goal is to estimate the feasibility and sustainability of solar energy in the Philippines based on current weather data,
+						in line with <strong>Sustainable Development Goal 7: Affordable and Clean Energy.</strong>
+					</p>
+					<div class="hero-team enter" style="--d:2">
+						<p class="eyebrow">Data Science Team</p>
+						<ul class="member-list">
+							<li>Lara Carrillo</li>
+							<li>Levie Dianito</li>
+							<li>Ivan Junio</li>
+							<li>Jonathan Reaport</li>
+						</ul>
 					</div>
 				</div>
-			</article>
+				<div class="hero-visual enter" style="--d:1" aria-hidden="true">
+					<svg viewBox="0 0 480 480" class="sun-emblem">
+						<defs>
+							<clipPath id="disc"><circle cx="240" cy="240" r="232" /></clipPath>
+							<radialGradient id="glow" cx="240" cy="210" r="200" gradientUnits="userSpaceOnUse">
+								<stop offset="0" stop-color="#F4C95D" stop-opacity=".35" />
+								<stop offset="1" stop-color="#F4C95D" stop-opacity="0" />
+							</radialGradient>
+						</defs>
+						<g clip-path="url(#disc)">
+							<rect width="480" height="480" fill="#1C4A3D" />
+							<circle cx="240" cy="210" r="200" fill="url(#glow)" />
+							<g class="orbits" fill="none" stroke="#F7F5ED" stroke-opacity=".14">
+								<circle cx="240" cy="210" r="118" />
+								<circle cx="240" cy="210" r="168" />
+								<circle cx="240" cy="210" r="218" />
+							</g>
+							<path class="sun-path" d="M 18 300 A 222 222 0 0 1 462 300" fill="none" stroke="#F4C95D" stroke-opacity=".55" stroke-width="1.5" stroke-dasharray="2 7" stroke-linecap="round" />
+							<g class="rays" stroke="#F4C95D" stroke-width="2" stroke-linecap="round">
+								<line x1="320.0" y1="210.0" x2="344.0" y2="210.0"/>
+								<line x1="319.2" y1="231.2" x2="330.8" y2="234.3"/>
+								<line x1="309.3" y1="250.0" x2="330.1" y2="262.0"/>
+								<line x1="298.0" y1="268.0" x2="306.5" y2="276.5"/>
+								<line x1="280.0" y1="279.3" x2="292.0" y2="300.1"/>
+								<line x1="261.2" y1="289.2" x2="264.3" y2="300.8"/>
+								<line x1="240.0" y1="290.0" x2="240.0" y2="314.0"/>
+								<line x1="218.8" y1="289.2" x2="215.7" y2="300.8"/>
+								<line x1="200.0" y1="279.3" x2="188.0" y2="300.1"/>
+								<line x1="182.0" y1="268.0" x2="173.5" y2="276.5"/>
+								<line x1="170.7" y1="250.0" x2="149.9" y2="262.0"/>
+								<line x1="160.8" y1="231.2" x2="149.2" y2="234.3"/>
+								<line x1="160.0" y1="210.0" x2="136.0" y2="210.0"/>
+								<line x1="160.8" y1="188.8" x2="149.2" y2="185.7"/>
+								<line x1="170.7" y1="170.0" x2="149.9" y2="158.0"/>
+								<line x1="182.0" y1="152.0" x2="173.5" y2="143.5"/>
+								<line x1="200.0" y1="140.7" x2="188.0" y2="119.9"/>
+								<line x1="218.8" y1="130.8" x2="215.7" y2="119.2"/>
+								<line x1="240.0" y1="130.0" x2="240.0" y2="106.0"/>
+								<line x1="261.2" y1="130.8" x2="264.3" y2="119.2"/>
+								<line x1="280.0" y1="140.7" x2="292.0" y2="119.9"/>
+								<line x1="298.0" y1="152.0" x2="306.5" y2="143.5"/>
+								<line x1="309.3" y1="170.0" x2="330.1" y2="158.0"/>
+								<line x1="319.2" y1="188.8" x2="330.8" y2="185.7"/>
+							</g>
+							<circle class="sun" cx="240" cy="210" r="66" fill="#F4C95D" />
+							<rect y="300" width="480" height="180" fill="#163D32" />
+							<line x1="0" y1="300" x2="480" y2="300" stroke="#F4C95D" stroke-opacity=".6" />
+							<g class="panels" fill="#287A56" stroke="#F7F5ED" stroke-opacity=".18" stroke-width=".8">
+								<polygon points="54.9,318.0 73.3,318.0 34.0,334.0 11.4,334.0"/>
+								<polygon points="75.6,318.0 93.9,318.0 59.6,334.0 36.9,334.0"/>
+								<polygon points="96.3,318.0 114.6,318.0 85.1,334.0 62.5,334.0"/>
+								<polygon points="117.0,318.0 135.3,318.0 110.7,334.0 88.1,334.0"/>
+								<polygon points="137.7,318.0 156.0,318.0 136.3,334.0 113.6,334.0"/>
+								<polygon points="158.4,318.0 176.7,318.0 161.8,334.0 139.2,334.0"/>
+								<polygon points="179.1,318.0 197.4,318.0 187.4,334.0 164.8,334.0"/>
+								<polygon points="199.8,318.0 218.1,318.0 213.0,334.0 190.3,334.0"/>
+								<polygon points="220.5,318.0 238.8,318.0 238.5,334.0 215.9,334.0"/>
+								<polygon points="241.2,318.0 259.5,318.0 264.1,334.0 241.5,334.0"/>
+								<polygon points="261.9,318.0 280.2,318.0 289.7,334.0 267.0,334.0"/>
+								<polygon points="282.6,318.0 300.9,318.0 315.2,334.0 292.6,334.0"/>
+								<polygon points="303.3,318.0 321.6,318.0 340.8,334.0 318.2,334.0"/>
+								<polygon points="324.0,318.0 342.3,318.0 366.4,334.0 343.7,334.0"/>
+								<polygon points="344.7,318.0 363.0,318.0 391.9,334.0 369.3,334.0"/>
+								<polygon points="365.4,318.0 383.7,318.0 417.5,334.0 394.9,334.0"/>
+								<polygon points="386.1,318.0 404.4,318.0 443.1,334.0 420.4,334.0"/>
+								<polygon points="406.7,318.0 425.1,318.0 468.6,334.0 446.0,334.0"/>
+								<polygon points="32.9,348.0 59.3,348.0 15.1,372.0 -17.8,372.0"/>
+								<polygon points="62.7,348.0 89.2,348.0 52.2,372.0 19.3,372.0"/>
+								<polygon points="92.6,348.0 119.0,348.0 89.4,372.0 56.5,372.0"/>
+								<polygon points="122.4,348.0 148.8,348.0 126.5,372.0 93.6,372.0"/>
+								<polygon points="152.2,348.0 178.6,348.0 163.6,372.0 130.7,372.0"/>
+								<polygon points="182.1,348.0 208.5,348.0 200.7,372.0 167.9,372.0"/>
+								<polygon points="211.9,348.0 238.3,348.0 237.9,372.0 205.0,372.0"/>
+								<polygon points="241.7,348.0 268.1,348.0 275.0,372.0 242.1,372.0"/>
+								<polygon points="271.5,348.0 297.9,348.0 312.1,372.0 279.3,372.0"/>
+								<polygon points="301.4,348.0 327.8,348.0 349.3,372.0 316.4,372.0"/>
+								<polygon points="331.2,348.0 357.6,348.0 386.4,372.0 353.5,372.0"/>
+								<polygon points="361.0,348.0 387.4,348.0 423.5,372.0 390.6,372.0"/>
+								<polygon points="390.8,348.0 417.3,348.0 460.7,372.0 427.8,372.0"/>
+								<polygon points="420.7,348.0 447.1,348.0 497.8,372.0 464.9,372.0"/>
+								<polygon points="26.4,392.0 64.7,392.0 22.7,426.0 -24.8,426.0"/>
+								<polygon points="69.6,392.0 107.9,392.0 76.2,426.0 28.8,426.0"/>
+								<polygon points="112.8,392.0 151.1,392.0 129.8,426.0 82.4,426.0"/>
+								<polygon points="156.0,392.0 194.3,392.0 183.4,426.0 135.9,426.0"/>
+								<polygon points="199.3,392.0 237.5,392.0 236.9,426.0 189.5,426.0"/>
+								<polygon points="242.5,392.0 280.7,392.0 290.5,426.0 243.1,426.0"/>
+								<polygon points="285.7,392.0 324.0,392.0 344.1,426.0 296.6,426.0"/>
+								<polygon points="328.9,392.0 367.2,392.0 397.6,426.0 350.2,426.0"/>
+								<polygon points="372.1,392.0 410.4,392.0 451.2,426.0 403.8,426.0"/>
+								<polygon points="415.3,392.0 453.6,392.0 504.8,426.0 457.3,426.0"/>
+								<polygon points="2.4,448.0 55.8,448.0 11.1,496.0 -55.2,496.0"/>
+								<polygon points="62.7,448.0 116.0,448.0 86.0,496.0 19.7,496.0"/>
+								<polygon points="122.9,448.0 176.3,448.0 160.9,496.0 94.5,496.0"/>
+								<polygon points="183.2,448.0 236.6,448.0 235.7,496.0 169.4,496.0"/>
+								<polygon points="243.4,448.0 296.8,448.0 310.6,496.0 244.3,496.0"/>
+								<polygon points="303.7,448.0 357.1,448.0 385.5,496.0 319.1,496.0"/>
+								<polygon points="364.0,448.0 417.3,448.0 460.3,496.0 394.0,496.0"/>
+								<polygon points="424.2,448.0 477.6,448.0 535.2,496.0 468.9,496.0"/>
+							</g>
+						</g>
+						<circle cx="240" cy="240" r="232" fill="none" stroke="#F7F5ED" stroke-opacity=".22" />
+					</svg>
+				</div>
+			</div>
+			<a class="scroll-cue" href="#overview" aria-label="Overview"><span aria-hidden="true"></span></a>
+		</section>
 
 		<!-- Overview -->
-			<article id="overview" class="wrapper style2">
-				<div class="container">
-					<header>
-						<h2>Project Overview</h2>
-					</header>
-					<div class="row aln-left">
-						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="icon featured fa-comments"></span>
-								<h3>Background</h3>
-								<p>With record-high electricity rates and geopolitical energy shocks, countless Filipinos nationwide have begun to seek solar energy as a stabler source of energy. But just how feasible could a solar-driven Philippines be, given the country's climate?</p>
-							</section>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="icon solid featured fa-chart-line"></span>
-								<h3>Problem</h3>
-								<p>It is still unknown how <strong>weather parameters</strong>, <strong>location</strong>, and <strong>seasonal variation</strong> affect solar energy generation in a Philippine context.</p>
-							</section>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<section class="box style1">
-								<span class="icon featured fa-lightbulb"></span>
-								<h3>Solution</h3>
-								<p>With weather data from NASA and information on existing Philippine power farms, we can estimate and evaluate the effect of weather, location, and seasons on solar energy generation.</p>
-							</section>
-						</div>
-					</div>
+		<section id="overview" class="tone-cream">
+			<div class="wrap">
+				<header class="section-head">
+					<h2>Project Overview</h2>
+				</header>
+				<div class="triad">
+					<section class="triad-item">
+						<h3>Background</h3>
+						<p>With record-high electricity rates and geopolitical energy shocks, countless Filipinos nationwide have begun to seek solar energy as a stabler source of energy. But just how feasible could a solar-driven Philippines be, given the country's climate?</p>
+					</section>
+					<section class="triad-item">
+						<h3>Problem</h3>
+						<p>It is still unknown how <strong>weather parameters</strong>, <strong>location</strong>, and <strong>seasonal variation</strong> affect solar energy generation in a Philippine context.</p>
+					</section>
+					<section class="triad-item">
+						<h3>Solution</h3>
+						<p>With weather data from NASA and information on existing Philippine power farms, we can estimate and evaluate the effect of weather, location, and seasons on solar energy generation.</p>
+					</section>
+				</div>
+			</div>
+		</section>
 
-					<div class="content-panel">
-						<h3>Research Questions</h3>
-						<ol>
-							<li>What weather parameters are most strongly associated with estimated solar energy generation potential in Philippine solar power plants?</li>
-							<li>How does estimated solar energy generation potential vary across the locations of selected solar power plants in the Philippines?</li>
-							<li>How does estimated solar energy generation potential vary across seasons in the Philippines?</li>
-						</ol>
+		<section class="tone-dark framework" aria-label="Research Questions">
+			<div class="wrap framework-grid">
+				<div class="framework-col">
+					<h3>Research Questions</h3>
+					<ol>
+						<li>What weather parameters are most strongly associated with estimated solar energy generation potential in Philippine solar power plants?</li>
+						<li>How does estimated solar energy generation potential vary across the locations of selected solar power plants in the Philippines?</li>
+						<li>How does estimated solar energy generation potential vary across seasons in the Philippines?</li>
+					</ol>
+				</div>
+				<div class="framework-col">
+					<h3>Research Hypotheses</h3>
+					<ol>
+						<li>H1: Solar irradiance has the strongest positive association with estimated solar energy generation potential among the weather parameters studied.</li>
+						<li>H2: Locations with higher solar irradiance will have higher estimated solar energy generation potential.</li>
+						<li>H3: Estimated solar energy generation potential differs significantly among seasons in the Philippines.</li>
+					</ol>
+				</div>
+				<div class="framework-col">
+					<h3>Objectives</h3>
+					<ol>
+						<li>To determine which studied weather parameters are most strongly associated with estimated solar energy generation potential.</li>
+						<li>To compare the estimated solar energy generation potential of selected solar power plants across geographic regions of the Philippines.</li>
+						<li>To examine seasonal variation in estimated solar energy generation potential across the Philippines.</li>
+					</ol>
+				</div>
+			</div>
+		</section>
 
-						<h3>Research Hypotheses</h3>
-						<ol>
-							<li>H1: Solar irradiance has the strongest positive association with estimated solar energy generation potential among the weather parameters studied.</li>
-							<li>H2: Locations with higher solar irradiance will have higher estimated solar energy generation potential.</li>
-							<li>H3: Estimated solar energy generation potential differs significantly among seasons in the Philippines.</li>
-						</ol>
-
-						<h3>Objectives</h3>
-						<ol>
-							<li>To determine which studied weather parameters are most strongly associated with estimated solar energy generation potential.</li>
-							<li>To compare the estimated solar energy generation potential of selected solar power plants across geographic regions of the Philippines.</li>
-							<li>To examine seasonal variation in estimated solar energy generation potential across the Philippines.</li>
-						</ol>
-					</div>
-
-					<div class="content-panel">
-						<h3>Dataset</h3>
-						<p>The data comprises 3 parts:</p>
-						<ol>
-							<li>[57 rows] The existing power plants of the Philippines (Location, Installed and Dependable Capacity)</li>
-							<li>[480 rows] The awarded and to-be-constructed power plants of the Philippines (Location, Projected Capacity)</li>
-							<li>[~20k rows] The daily weather data in locations of the aforementioned power plants (Solar Irradiation, Wind Speed, Temperature, Pressure, etc.)</li>
-						</ol>
-						<p>Dataset size is roughly 20.8k rows of weather data across all Philippine solar power farms.</p>
-					</div>
-
-					<div class="content-panel project-links">
-						<h3>Project Links</h3>
+		<section class="tone-paper dataset" aria-label="Dataset">
+			<div class="wrap">
+				<div class="dataset-head">
+					<h3 class="display-h3">Dataset</h3>
+					<p>The data comprises 3 parts:</p>
+				</div>
+				<ol class="stats">
+					<li><span class="stat"><span class="br">[</span><span class="num" data-count="57">57</span><span class="unit"> rows</span><span class="br">]</span></span> <span class="stat-text">The existing power plants of the Philippines (Location, Installed and Dependable Capacity)</span></li>
+					<li><span class="stat"><span class="br">[</span><span class="num" data-count="480">480</span><span class="unit"> rows</span><span class="br">]</span></span> <span class="stat-text">The awarded and to-be-constructed power plants of the Philippines (Location, Projected Capacity)</span></li>
+					<li><span class="stat"><span class="br">[</span>~<span class="num" data-count="20">20</span>k<span class="unit"> rows</span><span class="br">]</span></span> <span class="stat-text">The daily weather data in locations of the aforementioned power plants (Solar Irradiation, Wind Speed, Temperature, Pressure, etc.)</span></li>
+				</ol>
+				<div class="dataset-foot">
+					<p class="dataset-note">Dataset size is roughly 20.8k rows of weather data across all Philippine solar power farms.</p>
+					<div class="project-links">
+						<h3 class="eyebrow">Project Links</h3>
 						<div class="link-row">
-							<a class="button large" href="https://docs.google.com/spreadsheets/d/1mW125L-N_WqHavvCRakPno5fPM3tNVuSej167Edhkvo/edit?gid=0#gid=0" target="_blank" rel="noreferrer">Project Dataset</a>
-							<a class="button alt large" href="https://docs.google.com/document/d/1JuepiVG_AOrR4j7AO5PsS5SNyf2yLZRCeSvrRisMqBo/edit?tab=t.4ag7168mn7nn" target="_blank" rel="noreferrer">Data Collection Process</a>
+							<a class="button" href="https://docs.google.com/spreadsheets/d/1mW125L-N_WqHavvCRakPno5fPM3tNVuSej167Edhkvo/edit?gid=0#gid=0" target="_blank" rel="noreferrer">Project Dataset</a>
+							<a class="button button-alt" href="https://docs.google.com/document/d/1JuepiVG_AOrR4j7AO5PsS5SNyf2yLZRCeSvrRisMqBo/edit?tab=t.4ag7168mn7nn" target="_blank" rel="noreferrer">Data Collection Process</a>
 						</div>
 					</div>
 				</div>
-			</article>
+			</div>
+		</section>
 
 		<!-- Data -->
-			<article id="data" class="wrapper style3">
-				<div class="container">
-					<header>
-						<h2>Data Sources and Coverage</h2>
-					</header>
-					<div class="row">
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<h3>Existing Power Farms</h3>
-								<p>Data on existing power farms as of November 2025 was taken from the relevant DOE regional documents for Luzon, Visayas, and Mindanao.</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<h3>Awarded Projects</h3>
-								<p>Data on awarded solar projects was taken from the DOE's published list of awarded solar projects, including projected capacity information.</p>
-							</article>
-						</div>
-						<div class="col-4 col-6-medium col-12-small">
-							<article class="box style2">
-								<h3>Weather Data</h3>
-								<p>Weather conditions were collected from NASA POWER, where daily weather data can be generated for any place using its latitude and longitude.</p>
-							</article>
-						</div>
+		<section id="data" class="tone-sage">
+			<div class="wrap split">
+				<header class="section-head split-side">
+					<h2>Data Sources and Coverage</h2>
+				</header>
+				<div class="split-main">
+					<div class="source-cols">
+						<article>
+							<h3>Existing Power Farms</h3>
+							<p>Data on existing power farms as of November 2025 was taken from the relevant DOE regional documents for Luzon, Visayas, and Mindanao.</p>
+						</article>
+						<article>
+							<h3>Awarded Projects</h3>
+							<p>Data on awarded solar projects was taken from the DOE's published list of awarded solar projects, including projected capacity information.</p>
+						</article>
+						<article>
+							<h3>Weather Data</h3>
+							<p>Weather conditions were collected from NASA POWER, where daily weather data can be generated for any place using its latitude and longitude.</p>
+						</article>
 					</div>
-					<div class="content-panel">
-						<h3>Data Collection Sources</h3>
+					<div class="sources">
+						<h3 class="eyebrow">Data Collection Sources</h3>
 						<ul>
 							<li>DOE Luzon power farm data: <a href="https://prod-cms.doe.gov.ph/documents/d/guest/01-luzon-pdf" target="_blank" rel="noreferrer">01-Luzon</a></li>
 							<li>DOE Visayas power farm data: <a href="https://prod-cms.doe.gov.ph/documents/d/guest/02-visayas-pdf" target="_blank" rel="noreferrer">02-Visayas</a></li>
@@ -167,113 +271,85 @@
 						</ul>
 					</div>
 				</div>
-			</article>
+			</div>
+		</section>
 
-			<!-- Methods -->
-			<article id="methods" class="wrapper style3">
-				<div class="container">
-					<header>
-						<h2>Methodology</h2>
-					</header>
-					<div class="row">
-						<div class="col-6 col-6-medium col-12-small">
-							<article class="box style2">
-								<h3>Data Preparation</h3>
-								<p>We gathered solar farm locations and associated weather records to align each plant with the relevant environmental variables used in the analysis.</p>
-							</article>
-						</div>
-						<div class="col-6 col-6-medium col-12-small">
-							<article class="box style2">
-								<h3>Weather Analysis</h3>
-								<p>We examined the relationship between estimated solar energy generation potential and weather parameters such as solar irradiance, temperature, pressure, and wind speed.</p>
-							</article>
-						</div>
-						<div class="col-6 col-6-medium col-12-small">
-							<article class="box style2">
-								<h3>Geographic Comparison</h3>
-								<p>We compared solar energy generation potential across selected solar power plant locations in the Philippines to assess spatial variation.</p>
-							</article>
-						</div>
-						<div class="col-6 col-6-medium col-12-small">
-							<article class="box style2">
-								<h3>Seasonal Analysis</h3>
-								<p>We assessed how estimated solar energy generation potential differs across seasons in the Philippines, using weather patterns over time.</p>
-							</article>
-						</div>
-					</div>
-				</div>
-			</article>
+		<!-- Methods -->
+		<section id="methods" class="tone-cream">
+			<div class="wrap">
+				<header class="section-head">
+					<h2>Methodology</h2>
+				</header>
+				<ol class="steps">
+					<li class="step">
+						<h3>Data Preparation</h3>
+						<p>We gathered solar farm locations and associated weather records to align each plant with the relevant environmental variables used in the analysis.</p>
+					</li>
+					<li class="step">
+						<h3>Weather Analysis</h3>
+						<p>We examined the relationship between estimated solar energy generation potential and weather parameters such as solar irradiance, temperature, pressure, and wind speed.</p>
+					</li>
+					<li class="step">
+						<h3>Geographic Comparison</h3>
+						<p>We compared solar energy generation potential across selected solar power plant locations in the Philippines to assess spatial variation.</p>
+					</li>
+					<li class="step">
+						<h3>Seasonal Analysis</h3>
+						<p>We assessed how estimated solar energy generation potential differs across seasons in the Philippines, using weather patterns over time.</p>
+					</li>
+				</ol>
+			</div>
+		</section>
 
-			<!-- Results -->
-			<article id="results" class="wrapper style3">
-				<div class="container">
-					<header>
-						<h2>Expected Findings</h2>
-					</header>
-					<div class="row">
-						<div class="col-6 col-6-medium col-12-small">
-							<article class="box style2">
-								<h3>Strongest Weather Driver</h3>
-								<p>Solar irradiance is expected to show the strongest positive association with estimated solar energy generation potential among the weather parameters studied.</p>
-							</article>
-						</div>
-						<div class="col-6 col-6-medium col-12-small">
-							<article class="box style2">
-								<h3>Regional Variation</h3>
-								<p>Locations with higher solar irradiance are expected to exhibit higher estimated solar energy generation potential across Philippine solar power plants.</p>
-							</article>
-						</div>
-						<div class="col-12 col-12-medium col-12-small">
-							<article class="box style2">
-								<h3>Seasonal Differences</h3>
-								<p>Estimated solar energy generation potential is expected to differ significantly among seasons, reflecting how weather conditions vary throughout the year in the Philippines.</p>
-							</article>
-						</div>
-					</div>
+		<!-- Results -->
+		<section id="results" class="tone-dark">
+			<div class="wrap">
+				<header class="section-head">
+					<h2>Expected Findings</h2>
+				</header>
+				<div class="findings">
+					<article class="finding">
+						<span class="finding-mark mark-sun" aria-hidden="true"></span>
+						<h3>Strongest Weather Driver</h3>
+						<p>Solar irradiance is expected to show the strongest positive association with estimated solar energy generation potential among the weather parameters studied.</p>
+					</article>
+					<article class="finding">
+						<span class="finding-mark mark-map" aria-hidden="true"></span>
+						<h3>Regional Variation</h3>
+						<p>Locations with higher solar irradiance are expected to exhibit higher estimated solar energy generation potential across Philippine solar power plants.</p>
+					</article>
+					<article class="finding finding-wide">
+						<div class="season-bar" aria-hidden="true"><span class="dry"></span><span class="wet"></span></div>
+						<h3>Seasonal Differences</h3>
+						<p>Estimated solar energy generation potential is expected to differ significantly among seasons, reflecting how weather conditions vary throughout the year in the Philippines.</p>
+					</article>
 				</div>
-			</article>
+			</div>
+		</section>
 
 		<!-- Team -->
-			<article id="team" class="wrapper style4">
-				<div class="container medium">
-					<header>
-						<h2>Project Team</h2>
-					</header>
-					<div class="row">
-						<div class="col-3 col-6-medium col-12-small">
-							<div class="member-card">
-								<h3>Lara Reanna Carrillo</h3>
-							</div>
-						</div>
-						<div class="col-3 col-6-medium col-12-small">
-							<div class="member-card">
-								<h3>Levie Dianito</h3>
-							</div>
-						</div>
-						<div class="col-3 col-6-medium col-12-small">
-							<div class="member-card">
-								<h3>Ivan Ahron Junio</h3>
-							</div>
-						</div>
-						<div class="col-3 col-6-medium col-12-small">
-							<div class="member-card">
-								<h3>Jonathan Ebbinghans Reaport</h3>
-							</div>
-						</div>
-					</div>
-					<footer>
-						<p class="footer-note">Group Six (7) • SDG 7: Affordable and Clean Energy</p>
-					</footer>
-				</div>
-			</article>
+		<section id="team" class="tone-cream">
+			<div class="wrap">
+				<header class="section-head">
+					<h2>Project Team</h2>
+				</header>
+				<ul class="team-list">
+					<li><h3>Lara Reanna Carrillo</h3></li>
+					<li><h3>Levie Dianito</h3></li>
+					<li><h3>Ivan Ahron Junio</h3></li>
+					<li><h3>Jonathan Ebbinghans Reaport</h3></li>
+				</ul>
+			</div>
+		</section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		</main>
 
+		<footer class="site-footer tone-dark">
+			<div class="wrap">
+				<p class="footer-note">Group Six (7) • SDG 7: Affordable and Clean Energy</p>
+			</div>
+		</footer>
+
+		<script src="assets/js/site.js" defer></script>
 	</body>
 </html>
