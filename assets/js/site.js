@@ -27,8 +27,11 @@
 			byId.get(e.target.id)?.classList.add('is-active');
 		});
 	}, { rootMargin: '-45% 0px -50% 0px' });
+<<<<<<< HEAD
 	// the EDA sub-sections belong to "EDA"
 	['eda-weather', 'eda-location', 'eda-season'].forEach((id) => { if (byId.has('eda')) byId.set(id, byId.get('eda')); });
+=======
+>>>>>>> parent of 1f271cc (feat: results section with interactive charts and hero plant map)
 	byId.forEach((_, id) => { const el = document.getElementById(id); if (el) spy.observe(el); });
 
 	if (!('IntersectionObserver' in window) || reduce) return;
