@@ -27,6 +27,8 @@
 			byId.get(e.target.id)?.classList.add('is-active');
 		});
 	}, { rootMargin: '-45% 0px -50% 0px' });
+	// the hypothesis parts belong to "Results"
+	['h1', 'h2', 'h3'].forEach((id) => { if (byId.has('results')) byId.set(id, byId.get('results')); });
 	byId.forEach((_, id) => { const el = document.getElementById(id); if (el) spy.observe(el); });
 
 	if (!('IntersectionObserver' in window) || reduce) return;
