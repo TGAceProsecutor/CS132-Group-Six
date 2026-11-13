@@ -594,22 +594,6 @@ h2, .display-h3 {
 .part-lede { font-size: clamp(1.05rem, 1.3vw, 1.15rem); color: var(--ink-soft); max-width: 62ch; }
 .tone-dark .part-lede { color: rgba(247, 245, 237, .78); }
 
-.badge {
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-	padding: 6px 14px 6px 10px;
-	border-radius: 999px;
-	font-size: .82rem;
-	font-weight: 600;
-	letter-spacing: .01em;
-}
-.badge svg { width: 14px; height: 14px; flex: none; }
-.badge-yes { background: var(--green); color: var(--paper); }
-.badge-no { color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink-soft); }
-.tone-dark .badge-yes { background: var(--sun); color: var(--forest); }
-.tone-dark .badge-no { color: var(--cream); box-shadow: inset 0 0 0 1.5px rgba(247, 245, 237, .55); }
-
 .verdicts {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));

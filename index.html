@@ -27,7 +27,7 @@
 					<li><a href="#overview">Overview</a></li>
 					<li><a href="#data">Data</a></li>
 					<li><a href="#methods">Methodology</a></li>
-					<li><a href="#results">Results</a></li>
+					<li><a href="#eda">EDA</a></li>
 					<li><a href="#team">Team</a></li>
 				</ul>
 			</div>
@@ -189,16 +189,16 @@
 						<p>We gathered solar farm locations and associated weather records to align each plant with the relevant environmental variables used in the analysis.</p>
 					</li>
 					<li class="step">
-						<h3>Weather Analysis</h3>
-						<p>We examined the relationship between estimated solar energy generation potential and weather parameters such as solar irradiance, temperature, pressure, and wind speed.</p>
+						<h3>Generation Estimates</h3>
+						<p>For each plant-day we estimated generation from installed capacity, daily irradiance, and an assumed performance ratio, then labelled each day as dry or wet season.</p>
 					</li>
 					<li class="step">
-						<h3>Geographic Comparison</h3>
-						<p>We compared solar energy generation potential across selected solar power plant locations in the Philippines to assess spatial variation.</p>
+						<h3>Weather Exploration</h3>
+						<p>We computed Spearman correlations between estimated generation and seven weather parameters, including irradiance, humidity, precipitation, temperature, and wind speed.</p>
 					</li>
 					<li class="step">
-						<h3>Seasonal Analysis</h3>
-						<p>We assessed how estimated solar energy generation potential differs across seasons in the Philippines, using weather patterns over time.</p>
+						<h3>Location and Season</h3>
+						<p>We summarised and plotted the estimates by island group, grid cell, month, and season to see where and when generation potential is higher.</p>
 					</li>
 				</ol>
 				<div class="formula">
@@ -208,34 +208,31 @@
 			</div>
 		</section>
 
-		<!-- Results: in a nutshell -->
-		<section id="results" class="tone-dark part part-nutshell">
+		<!-- EDA: at a glance -->
+		<section id="eda" class="tone-dark part part-nutshell">
 			<div class="wrap">
 				<header class="part-head">
-					<p class="eyebrow">Results · The study in a nutshell</p>
-					<h2>Sunlight drives the estimates, and the dry season leads almost everywhere</h2>
-					<p class="part-lede">Across 19 NASA POWER grid cells covering 57 plants (3,211 MW), estimated generation per MW is higher in the dry season in 18 cells. Even so, the seasonal difference is not statistically significant.</p>
+					<p class="eyebrow">Exploratory Data Analysis · At a glance</p>
+					<h2>Sunlight shapes the estimates, and the dry season runs higher almost everywhere</h2>
+					<p class="part-lede">Before any formal testing, we explored the estimates for 57 plants (3,211 MW) in 19 NASA POWER grid cells. In 18 of the 19 cells, estimated generation per MW is higher in the dry season than in the wet season.</p>
 				</header>
 				<ol class="verdicts">
 					<li>
-						<a href="#h1">
-							<span class="verdict-tag">H1 · Weather</span>
-							<span class="badge badge-yes"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.3l2.6 2.6L11 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Supported</span>
-							<span class="verdict-text">Irradiance is the strongest weather driver (ρ = 0.999).</span>
+						<a href="#eda-weather">
+							<span class="verdict-tag">RQ1 · Weather</span>
+							<span class="verdict-text">Irradiance tracks estimated generation almost perfectly (ρ = 0.999). Humidity and rain move the other way.</span>
 						</a>
 					</li>
 					<li>
-						<a href="#h2">
-							<span class="verdict-tag">H2 · Location</span>
-							<span class="badge badge-yes"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.3l2.6 2.6L11 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Supported</span>
-							<span class="verdict-text">Sunnier sites yield more once plant size is controlled (partial r = 0.73).</span>
+						<a href="#eda-location">
+							<span class="verdict-tag">RQ2 · Location</span>
+							<span class="verdict-text">Plant size explains most of the output. Per MW, Visayas and Mindanao sites yield more than Luzon.</span>
 						</a>
 					</li>
 					<li>
-						<a href="#h3">
-							<span class="verdict-tag">H3 · Season</span>
-							<span class="badge badge-no"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4 4l6 6M10 4l-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Not supported</span>
-							<span class="verdict-text">Dry season is 22.5% higher, but not significant (p = 0.0998).</span>
+						<a href="#eda-season">
+							<span class="verdict-tag">RQ3 · Season</span>
+							<span class="verdict-text">The average grid cell's dry-season estimate is 22.5% higher, mostly because of March to May.</span>
 						</a>
 					</li>
 				</ol>
@@ -250,23 +247,22 @@
 					</div>
 					<div class="chart-plot"></div>
 				</figure>
-				<p class="part-note">Estimates come from capacity × irradiance × performance ratio, not metered output, over one year (Sep 2025 – Aug 2026).</p>
+				<p class="part-note">Estimates come from capacity × irradiance × performance ratio, not metered output, over one year (Sep 2025 – Aug 2026). These are exploratory patterns; whether they hold up is a question for the hypothesis-testing stage.</p>
 			</div>
 		</section>
 
-		<!-- Results: H1 -->
-		<section id="h1" class="tone-paper part">
+		<!-- EDA: weather -->
+		<section id="eda-weather" class="tone-paper part">
 			<div class="wrap">
 				<header class="part-head">
-					<p class="eyebrow">Hypothesis 1 · Weather</p>
-					<h2>Irradiance outranks every other weather factor</h2>
-					<span class="badge badge-yes"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.3l2.6 2.6L11 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Supported</span>
-					<p class="part-lede">We ranked seven NASA POWER weather parameters by how closely they track estimated generation. Irradiance leads by a wide margin; humidity and rain pull generation down.</p>
+					<p class="eyebrow">RQ1 · Weather parameters</p>
+					<h2>Irradiance moves with generation more closely than any other weather factor</h2>
+					<p class="part-lede">We compared seven NASA POWER weather parameters against estimated generation across 20,496 plant-days. Irradiance stands well apart; humidity and precipitation have the strongest negative relationships.</p>
 				</header>
 				<ul class="figures">
 					<li><span class="figure-value">0.999</span><span class="figure-label">Spearman ρ between irradiance and estimated generation</span></li>
-					<li><span class="figure-value">56 of 56</span><span class="figure-label">plants where irradiance is the strongest factor</span></li>
-					<li><span class="figure-value">6 of 6</span><span class="figure-label">head-to-head tests irradiance wins (Bonferroni α = 0.0083)</span></li>
+					<li><span class="figure-value">−0.75</span><span class="figure-label">Spearman ρ for relative humidity, the strongest negative factor</span></li>
+					<li><span class="figure-value">56 of 56</span><span class="figure-label">plants where irradiance is the most closely related parameter</span></li>
 				</ul>
 				<div class="chart-pair">
 					<figure class="chart" data-chart="rho">
@@ -284,29 +280,28 @@
 						<div class="chart-plot"></div>
 					</figure>
 				</div>
-				<p class="part-note">Irradiance is an input to the estimate, so part of this near-perfect link is built in. Days from the same plant are not independent; ranking each plant separately gives the same order.</p>
+				<p class="part-note">Irradiance is an input to the estimate, so much of this near-perfect relationship is built in. Correlation describes how the variables move together; it does not show cause.</p>
 			</div>
 		</section>
 
-		<!-- Results: H2 -->
-		<section id="h2" class="tone-sage part">
+		<!-- EDA: location -->
+		<section id="eda-location" class="tone-sage part">
 			<div class="wrap">
 				<header class="part-head">
-					<p class="eyebrow">Hypothesis 2 · Location</p>
-					<h2>Sunnier places yield more, once plant size is set aside</h2>
-					<span class="badge badge-yes"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 7.3l2.6 2.6L11 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Supported, capacity controlled</span>
-					<p class="part-lede">Raw output mostly reflects how big a plant is (r = −0.10 with irradiance, p = 0.44). Remove the effect of installed capacity and the link to sunlight is clear.</p>
+					<p class="eyebrow">RQ2 · Location</p>
+					<h2>Plant size sets the output; location shifts the yield per MW</h2>
+					<p class="part-lede">A plant's total estimated output depends mostly on how much capacity it has. Dividing by capacity gives specific yield, which reflects how sunny each site is: Luzon averages the lowest yield and Mindanao the highest.</p>
 				</header>
 				<ul class="figures">
-					<li><span class="figure-value">0.73</span><span class="figure-label">partial correlation with irradiance, capacity controlled (p &lt; 0.001)</span></li>
-					<li><span class="figure-value">+30</span><span class="figure-label">MWh/day per plant for each extra 1 kWh/m²/day of irradiance</span></li>
-					<li><span class="figure-value">p &lt; 0.001</span><span class="figure-label">island groups differ in yield (ANOVA, F = 20.2)</span></li>
+					<li><span class="figure-value">1,414</span><span class="figure-label">kWh per kWp per year, Luzon mean (40 plants)</span></li>
+					<li><span class="figure-value">1,488</span><span class="figure-label">kWh per kWp per year, Visayas mean (15 plants)</span></li>
+					<li><span class="figure-value">1,518</span><span class="figure-label">kWh per kWp per year, Mindanao mean (2 plants)</span></li>
 				</ul>
 				<div class="chart-pair">
-					<figure class="chart" data-chart="partial">
+					<figure class="chart" data-chart="capacity">
 						<figcaption>
-							<span class="chart-title">Irradiance vs generation, plant size removed</span>
-							<span class="chart-sub">Residuals after removing the effect of installed MW · each dot is one plant</span>
+							<span class="chart-title">Installed capacity vs estimated generation</span>
+							<span class="chart-sub">Mean MWh/day over the year · each dot is one plant</span>
 						</figcaption>
 						<div class="chart-legend">
 							<span class="key"><i class="dot dot-luzon"></i>Luzon</span>
@@ -323,24 +318,23 @@
 						<div class="chart-plot"></div>
 					</figure>
 				</div>
-				<p class="bridge"><strong>Season matters more than place.</strong> Monthly irradiance swings 1.89× over the year, against 1.18× between the best and worst site.</p>
-				<p class="part-note">Plants share 19 satellite grid cells, so the effective sample is smaller than 57 and these p-values are optimistic. Mindanao has only two plants.</p>
+				<p class="bridge"><strong>Season varies more than place.</strong> Monthly irradiance swings 1.89× over the year, against 1.18× between the sunniest and least sunny site.</p>
+				<p class="part-note">Plants share 19 satellite grid cells, so neighbouring plants often have identical weather. Mindanao has only two plants, so its mean rests on very little data.</p>
 			</div>
 		</section>
 
-		<!-- Results: H3 -->
-		<section id="h3" class="tone-paper part">
+		<!-- EDA: season -->
+		<section id="eda-season" class="tone-paper part">
 			<div class="wrap">
 				<header class="part-head">
-					<p class="eyebrow">Hypothesis 3 · Season</p>
-					<h2>The dry season looks higher, but the difference is not significant</h2>
-					<span class="badge badge-no"><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M4 4l6 6M10 4l-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Not supported</span>
-					<p class="part-lede">On average a grid cell generates more in the dry season than in the wet season. A paired t-test gives p = 0.0998, above the 0.05 cutoff, so the gap could be down to chance and H3 is not supported.</p>
+					<p class="eyebrow">RQ3 · Season</p>
+					<h2>Dry-season estimates run higher, but not evenly across places</h2>
+					<p class="part-lede">On average, a grid cell's estimated generation is higher in the dry season (Dec–May) than in the wet season (Jun–Nov). The size of that gap varies a lot from cell to cell.</p>
 				</header>
 				<ul class="figures">
-					<li><span class="figure-value">+22.5%</span><span class="figure-label">more estimated generation in the dry season</span></li>
-					<li><span class="figure-value">p = 0.0998</span><span class="figure-label">above 0.05, so not statistically significant</span></li>
-					<li><span class="figure-value">18 of 19</span><span class="figure-label">grid cells are higher in the dry season</span></li>
+					<li><span class="figure-value">+22.5%</span><span class="figure-label">higher mean estimated generation per grid cell in the dry season</span></li>
+					<li><span class="figure-value">18 of 19</span><span class="figure-label">grid cells with a higher dry-season estimate</span></li>
+					<li><span class="figure-value">40%</span><span class="figure-label">of all capacity sits in one grid cell, C01</span></li>
 				</ul>
 				<div class="chart-pair chart-pair-flip">
 					<figure class="chart" data-chart="seasons">
@@ -374,7 +368,18 @@
 					<div class="chart-plot"></div>
 				</figure>
 				<p class="bridge"><strong>The dry season starts slow.</strong> December to February are no sunnier than most wet months; the dry-season lead comes from March to May.</p>
-				<p class="part-note">Why not significant? Most cells gain only a little in the dry season, while C01, which holds 40% of all capacity, gains far more. Differences that uneven make the average too uncertain to call.</p>
+				<p class="part-note">C01 holds 40% of all capacity and has by far the largest seasonal gap, so it pulls the average up. Most other cells show a much smaller difference.</p>
+			</div>
+		</section>
+
+		<!-- Next steps -->
+		<section class="tone-sage part" aria-label="Next steps">
+			<div class="wrap">
+				<header class="part-head">
+					<p class="eyebrow">What comes next</p>
+					<h2>From patterns to tests</h2>
+					<p class="part-lede">This page covers exploration only. In the next stage we will formally test each hypothesis, taking into account that plants share grid cells and that one cell holds a large share of capacity.</p>
+				</header>
 			</div>
 		</section>
 

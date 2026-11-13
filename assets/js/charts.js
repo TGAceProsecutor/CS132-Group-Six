@@ -1,4 +1,4 @@
-/* Results charts. Data: window.RESULTS (assets/data/results.js, generated from raw-results/*.xlsx). */
+/* EDA charts. Data: window.RESULTS (assets/data/results.js, generated from raw-results/*.xlsx). */
 (() => {
 	const R = window.RESULTS;
 	if (!R || !window.d3) return;
@@ -16,7 +16,6 @@
 	const f0 = fmt(',.0f'), f1 = fmt(',.1f'), f2 = fmt(',.2f'), f3 = fmt(',.3f');
 	const s0 = fmt('+,.0f'), s1 = fmt('+,.1f'), s2 = fmt('+,.2f');
 	const pct = (v) => s1(v * 100) + '%';
-	const pFmt = (p) => (p < 0.001 ? 'p < 0.001' : 'p = ' + (p < 0.01 ? p.toFixed(4) : p.toFixed(4).replace(/0+$/, '')));
 
 	/* ---------- tooltip ---------- */
 	const tip = document.getElementById('tooltip');
@@ -174,7 +173,7 @@
 		], groups.flatMap((g2) => g2.cells));
 	}
 
-	/* ---------- 2. H1: Spearman rho by weather parameter ---------- */
+	/* ---------- 2. Weather: Spearman rho by weather parameter ---------- */
 	function rho(plot, W) {
 		const P = R.h1.params;
 		const narrow = W < 420;
@@ -201,16 +200,15 @@
 			.text((d) => fmt(Math.abs(d.rho) > 0.99 ? '+.3f' : '+.2f')(d.rho));
 		rowHover(rows, (d) => [[
 			[fmt('+.3f')(d.rho), 'Spearman ρ'],
-			[`${minus(d.lo.toFixed(3))} to ${minus(d.hi.toFixed(3))}`, '95% CI'],
 			[d.strength, d.rho >= 0 ? 'positive' : 'negative'],
 		], `${d.name} (${d.unit})`]);
 		table(plot.closest('figure'), 'Spearman correlation of each weather parameter with estimated generation', [
 			['Parameter', (d) => d.name], ['NASA code', (d) => d.code.split(' ')[0]], ['Unit', (d) => d.unit],
-			['ρ', (d) => fmt('+.4f')(d.rho), 1], ['95% CI', (d) => `${minus(d.lo.toFixed(4))} to ${minus(d.hi.toFixed(4))}`, 1], ['Strength', (d) => d.strength],
+			['ρ', (d) => fmt('+.4f')(d.rho), 1], ['Strength', (d) => d.strength],
 		], P);
 	}
 
-	/* ---------- 3. H1: irradiance vs specific yield (sample) ---------- */
+	/* ---------- 3. Weather: irradiance vs specific yield (sample) ---------- */
 	function irradiance(plot, W) {
 		const pts = R.h1.sample;
 		const m = { top: 8, right: 12, bottom: 48, left: 54 };
@@ -233,40 +231,32 @@
 		], pts);
 	}
 
-	/* ---------- 4. H2: partial regression (capacity removed) ---------- */
-	function partial(plot, W) {
-		const pts = R.h2.plants;
+	/* ---------- 4. Location: installed capacity vs estimated generation, per plant ---------- */
+	function capacity(plot, W) {
+		// yearly specific yield (kWh/kWp/yr = MWh/MW/yr) × MW / 365 = mean MWh/day
+		const pts = R.h2.yields.map((d) => ({ ...d, e: (d.mw * d.yield) / 365 }));
 		const m = { top: 8, right: 14, bottom: 48, left: 54 };
 		const w = W - m.left - m.right, h = Math.round(Math.min(340, Math.max(240, w * 0.62)));
-		const svg = svgIn(plot, W, h + m.top + m.bottom).attr('aria-label', 'Scatter plot of irradiance and generation after removing plant size: points rise from lower left to upper right (partial r = 0.73).');
+		const svg = svgIn(plot, W, h + m.top + m.bottom).attr('aria-label', 'Scatter plot of installed capacity against mean estimated daily generation for 57 plants. Points lie close to a straight line: bigger plants generate more.');
 		const g = svg.append('g').attr('transform', `translate(${m.left},${m.top})`);
-		const xe = d3.extent(pts, (d) => d.x), ye = d3.extent(pts, (d) => d.y);
-		const x = d3.scaleLinear().domain([xe[0] - 0.03, xe[1] + 0.03]).nice().range([0, w]);
-		const y = d3.scaleLinear().domain([ye[0] - 2, ye[1] + 2]).nice().range([h, 0]);
+		const x = d3.scaleLinear().domain([0, d3.max(pts, (d) => d.mw)]).nice().range([0, w]);
+		const y = d3.scaleLinear().domain([0, d3.max(pts, (d) => d.e)]).nice().range([h, 0]);
 		gridY(g, y, w, 5);
-		xAxis(g, x, h, 5, (v) => minus(d3.format('.1f')(v)), 'Irradiance, plant size removed (kWh/m²/day)', w);
-		yAxis(g, y, 5, f0, 'Generation, size removed (MWh/day)', h);
-		g.append('line').attr('x1', x(0)).attr('x2', x(0)).attr('y1', 0).attr('y2', h).attr('stroke', '#CBD2CC');
-		g.append('line').attr('x1', 0).attr('x2', w).attr('y1', y(0)).attr('y2', y(0)).attr('stroke', '#CBD2CC');
-		const b = R.h2.partial.slope;
-		const [d0, d1] = x.domain();
-		g.append('line').attr('x1', x(d0)).attr('y1', y(b * d0)).attr('x2', x(d1)).attr('y2', y(b * d1))
-			.attr('stroke', COL.ink).attr('stroke-width', 1.5).attr('stroke-opacity', 0.6);
-		g.append('text').attr('class', 'label-muted').attr('x', x(d1) - 4).attr('y', y(b * d1) + (y(b * d1) < 20 ? 16 : -8)).attr('text-anchor', 'end')
-			.text(`slope +${Math.round(b)} MWh/day per kWh/m²/day`);
+		xAxis(g, x, h, 5, f0, 'Installed capacity (MW)', w);
+		yAxis(g, y, 5, f0, 'Mean estimated generation (MWh/day)', h);
 		g.append('g').selectAll('circle').data(pts).join('circle')
-			.attr('cx', (d) => x(d.x)).attr('cy', (d) => y(d.y)).attr('r', 5)
-			.attr('fill', (d) => COL[d.island]).attr('stroke', COL.paper).attr('stroke-width', 2);
-		nearest(svg, g, pts, (d) => x(d.x), (d) => y(d.y), m, w, h, (d, p) => showTip([
-			[fmt('+.3f')(d.x), 'kWh/m²/day irradiance vs expected', COL[d.island]], [s1(d.y), 'MWh/day generation vs expected'],
-		], `${d.name} · ${d.island}`, p), 5);
-		table(plot.closest('figure'), 'Partial-regression residuals per plant', [
-			['Plant', (d) => d.name], ['Island group', (d) => d.island],
-			['Irradiance residual (kWh/m²/day)', (d) => fmt('+.4f')(d.x), 1], ['Generation residual (MWh/day)', (d) => s2(d.y), 1],
-		], pts);
+			.attr('cx', (d) => x(d.mw)).attr('cy', (d) => y(d.e)).attr('r', 5)
+			.attr('fill', (d) => COL[d.island]).attr('fill-opacity', 0.85).attr('stroke', COL.paper).attr('stroke-width', 1.5);
+		nearest(svg, g, pts, (d) => x(d.mw), (d) => y(d.e), m, w, h, (d, p) => showTip([
+			[f1(d.mw) + ' MW', 'installed capacity', COL[d.island]], [f1(d.e), 'MWh/day estimated'], [f0(d.yield), 'kWh per kWp per year'],
+		], `${d.name} · ${d.province}`, p), 5);
+		table(plot.closest('figure'), 'Installed capacity and mean estimated generation per plant', [
+			['Plant', (d) => d.name], ['Province', (d) => d.province], ['Island group', (d) => d.island],
+			['MW', (d) => f1(d.mw), 1], ['Mean MWh/day', (d) => f1(d.e), 1],
+		], [...pts].sort((a, b) => b.mw - a.mw));
 	}
 
-	/* ---------- 5. H2: specific yield by island group (strip plot) ---------- */
+	/* ---------- 5. Location: specific yield by island group (strip plot) ---------- */
 	function yieldStrip(plot, W) {
 		const pts = R.h2.yields, isl = R.h2.islands;
 		const m = { top: 8, right: 16, bottom: 48, left: 92 };
@@ -299,7 +289,7 @@
 		], [...pts].sort((a, b) => b.yield - a.yield));
 	}
 
-	/* ---------- 6. H3: dry vs wet, mean per grid cell ---------- */
+	/* ---------- 6. Season: dry vs wet, mean per grid cell ---------- */
 	function seasons(plot, W) {
 		const H = R.h3;
 		const narrow = W < 520;
@@ -310,7 +300,7 @@
 		const m = { top: 4, right: 70, bottom: 44, left: narrow ? 92 : 150 };
 		const rowH = 48, bh = 24, h = rows.length * rowH + 44, w = W - m.left - m.right;
 		const svg = svgIn(plot, W, h + m.top + m.bottom).attr('aria-label',
-			`Bar chart: dry season ${f0(H.dryMean)} MWh/day, wet season ${f0(H.wetMean)} MWh/day per grid cell. The difference is not statistically significant (p = 0.0998).`);
+			`Bar chart: dry season ${f0(H.dryMean)} MWh/day, wet season ${f0(H.wetMean)} MWh/day per grid cell. The dry-season mean is ${H.pct}% higher.`);
 		const g = svg.append('g').attr('transform', `translate(${m.left},${m.top})`);
 		const x = d3.scaleLinear().domain([0, d3.max(rows, (d) => d.v)]).nice().range([0, w]);
 		const axisY = rows.length * rowH;
@@ -325,18 +315,18 @@
 		bars.append('text').attr('class', 'label-muted').attr('x', -m.left).attr('y', rowH / 2 + 14).text((d) => d.months);
 		bars.append('path').attr('d', (d) => hbar(0, x(d.v), (rowH - bh) / 2, bh)).attr('fill', (d) => d.color);
 		bars.append('text').attr('class', 'label').attr('x', (d) => x(d.v) + 8).attr('y', rowH / 2 + 4).style('font-weight', 600).text((d) => f0(d.v));
-		// the gap between the two bars, and the verdict on it
+		// the gap between the two bars
 		const x0 = x(H.wetMean), x1 = x(H.dryMean), yb = axisY + 14;
 		g.append('path').attr('d', `M${x0},${yb - 6}V${yb}H${x1}V${yb - 6}`).attr('fill', 'none').attr('stroke', COL.ink).attr('stroke-width', 1.5);
 		g.append('text').attr('class', 'label').attr('x', x1).attr('y', yb + 18).attr('text-anchor', 'end')
-			.text(`${s0(H.mean)} MWh/day · not significant (p = 0.0998)`);
+			.text(`${s0(H.mean)} MWh/day (+${H.pct}%) in the dry season`);
 		rowHover(bars, (d) => [[[f1(d.v) + ' MWh/day', 'mean per grid cell', d.color]], `${d.label} (${d.months})`]);
 		table(plot.closest('figure'), 'Mean estimated generation per grid cell by season', [
 			['Season', (d) => `${d.label} (${d.months})`], ['Mean per grid cell (MWh/day)', (d) => f1(d.v), 1],
 		], rows);
 	}
 
-	/* ---------- 7. H3: monthly irradiance with the seasons shaded ---------- */
+	/* ---------- 7. Season: monthly irradiance with the seasons shaded ---------- */
 	function months(plot, W) {
 		const M = R.h2.months;
 		const isDry = (k) => { const mo = +k.slice(5); return mo === 12 || mo <= 5; };
@@ -390,7 +380,7 @@
 		], M);
 	}
 
-	/* ---------- 8. H3: dry − wet difference in each grid cell ---------- */
+	/* ---------- 8. Season: dry − wet difference in each grid cell ---------- */
 	function cellDiff(plot, W) {
 		const cells = [...R.h3.cells].sort((a, b) => b.diff - a.diff);
 		const narrow = W < 560;
@@ -468,7 +458,7 @@
 	heroMap();
 
 	/* ---------- mount + resize ---------- */
-	const charts = { nutshell, rho, irradiance, partial, yield: yieldStrip, seasons, months, celldiff: cellDiff };
+	const charts = { nutshell, rho, irradiance, capacity, yield: yieldStrip, seasons, months, celldiff: cellDiff };
 	document.querySelectorAll('figure.chart[data-chart]').forEach((fig) => {
 		const draw = charts[fig.dataset.chart];
 		const plot = fig.querySelector('.chart-plot');
