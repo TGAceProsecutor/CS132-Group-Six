@@ -566,17 +566,6 @@ h2, .display-h3 {
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: clamp(28px, 4vw, 56px);
 }
-<<<<<<< HEAD
-.part-head h2 { font-size: clamp(2.4rem, 4.8vw, 4.2rem); line-height: 1.02; max-width: 18ch; }
-.part-lede { font-size: clamp(1.05rem, 1.3vw, 1.15rem); color: var(--ink-soft); max-width: 62ch; }
-.tone-dark .part-lede { color: rgba(247, 245, 237, .78); }
-
-.verdicts {
-	display: grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: clamp(20px, 3vw, 40px);
-	margin-bottom: clamp(40px, 5vw, 64px);
-=======
 .finding {
 	padding-top: 28px;
 	border-top: 1px solid rgba(247, 245, 237, .2);
@@ -587,7 +576,6 @@ h2, .display-h3 {
 	font-size: clamp(2rem, 3.2vw, 2.8rem);
 	line-height: 1;
 	margin-bottom: 16px;
->>>>>>> parent of 1f271cc (feat: results section with interactive charts and hero plant map)
 }
 .finding p { color: rgba(247, 245, 237, .78); max-width: 46ch; }
 .finding-mark {
