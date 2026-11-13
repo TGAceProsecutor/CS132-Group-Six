@@ -780,6 +780,12 @@ h2, .display-h3 {
 	line-height: 1.05;
 }
 
+.eda-stack { display: grid; gap: clamp(20px, 2.5vw, 32px); }
+.eda-figure figcaption { margin-bottom: 10px; }
+.eda-figure img { display: block; width: 100%; height: auto; }
+.eda-map img { max-width: 760px; margin-inline: auto; }
+
+
 /* ---------- Footer ---------- */
 .site-footer { padding-block: 36px; }
 .footer-note { font-size: .9rem; color: rgba(247, 245, 237, .7); }
